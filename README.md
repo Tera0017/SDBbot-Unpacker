@@ -91,6 +91,6 @@ $ python sdbbot_unpacker.py -f png2
 
 ### Support
 
-In case some files are not working, please make sure it is SDBbot, if yes please provide me the hash in a DM @Tera0017.
+In case some files are not working, please make sure it is a packed SDBbot, if yes please provide me the hash in a DM @Tera0017.
 
 Regards
