@@ -51,7 +51,7 @@ $ python sdbbot_unpacker.py -f png1
 |--> SdbInstallerDll successfully dumped: SDBbot_SdbInstallerDll_png1
 |--> RegCodeLoader successfully dumped: SDBbot_RegCodeLoader_png1
 |--> RegBlob successfully dumped: SDBbot_RegBlob_png1
-|--> BotDLL successfully dumped: SDBbot_RegBlob_png1
+|--> BotDLL successfully dumped: SDBbot_RAT_BotDLL_png1
 
 ```
 
@@ -78,7 +78,7 @@ $ python sdbbot_unpacker.py -f png2
 |--> SdbInstallerDll successfully dumped: SDBbot_SdbInstallerDll_png2
 |--> RegCodeLoader successfully dumped: SDBbot_RegCodeLoader_png2
 |--> RegBlob successfully dumped: SDBbot_RegBlob_png2
-|--> BotDLL successfully dumped: SDBbot_RegBlob_png2
+|--> BotDLL successfully dumped: SDBbot_RAT_BotDLL_png2
 
 ```
 
