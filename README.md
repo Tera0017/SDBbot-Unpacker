@@ -28,7 +28,6 @@ SDBbot Modules Unpacker
 optional arguments:
   -h, --help            show this help message and exit
   -f FILE, --file FILE  File to unpack modules.
-
 ```
 
 #### Example x86
@@ -52,7 +51,6 @@ $ python sdbbot_unpacker.py -f png1
 |--> RegCodeLoader successfully dumped: SDBbot_RegCodeLoader_png1
 |--> RegBlob successfully dumped: SDBbot_RegBlob_png1
 |--> BotDLL successfully dumped: SDBbot_RAT_BotDLL_png1
-
 ```
 
 
@@ -79,7 +77,6 @@ $ python sdbbot_unpacker.py -f png2
 |--> RegCodeLoader successfully dumped: SDBbot_RegCodeLoader_png2
 |--> RegBlob successfully dumped: SDBbot_RegBlob_png2
 |--> BotDLL successfully dumped: SDBbot_RAT_BotDLL_png2
-
 ```
 
 
