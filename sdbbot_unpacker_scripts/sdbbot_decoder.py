@@ -39,7 +39,7 @@ class SDBbotDecoder:
                 ind = ind + 3 if 'C78424'.decode('hex') == opcodes[:3] else ind
                 value = to_str_dword(to_hex_dword(opcodes[ind: ind + 4]) - 1)
                 address = self.pe.get_rva_from_offset(match.strings[0][0])
-                data_search = self.pe.get_data(address, 100)
+                data_search = self.pe.get_data(address, 150)
                 size = self.encoded_size(data_search)
                 address = self.pe.get_rva_from_offset(self.filedata.index(value) + 4)
                 return address, size
@@ -162,7 +162,7 @@ class SDBbotDecoderx86(SDBbotDecoder):
     def __init__(self, filepath):
         rules = {
             '$code1': '{81 (F1| F2) ?? ?? ?? ?? [5-20] C1 C? (03| 07) 89}',
-            '$code2': '{C7 45 ?? ?? ?? ?? ?? 8B ?? ?? (48| 83 (E8| EA) 01) 89}',
+            '$code2': '{C7 45 ?? ?? ?? ?? ?? 8B ?? ?? (48| 83 (E8| EA| E9) 01) 89}',
             '$code3': '{81 ?D [3-6] 00 00 (73| 75| 0F)}',
             '$code4': '{C1 C0 0?}',
             '$code5': '{C7 45 [5] C7 45 [5] C7 45 [5] (8B| 89)}'
@@ -175,7 +175,7 @@ class SDBbotDecoderx64(SDBbotDecoder):
     def __init__(self, filepath):
         rules = {
             '$code1': '{35 ?? ?? ?? ?? 89 (44 24 ??| 84 24 [2] 00 00) 8B (44 24 ??| 84 24 [2] 00 00) C1 C? 0? 89}',
-            '$code2': '{C7 (44 24 ??| 84 24 [2] 00 00) ?? ?? ?? ?? 8B (44 24 ??| 84 24 [2] 00 00) (FF C8| 83 E8 01)}',
+            '$code2': '{C7 (44 24 ??| 84 24 [2] 00 00) ?? ?? ?? ?? 8B (44 24 ??| 84 24 [2] 00 00) (FF C8| 83 (E8| EA| E9) 01)}',
             '$code3': '{48 3D [2] 00 00 (73| 75| 0F)}',
             '$code4': '{C1 C0 0?}',
             '$code5': '{C7 (44 24 ??| 84 24 [2] 00 00) ?? ?? ?? ?? C7 (44 24 ??| 84 24 [2] 00 00) ?? ?? ?? ?? C7 (44 24 ??| 84 24 [2] 00 00) ?? ?? ?? ?? 48}',
