@@ -161,7 +161,7 @@ class SDBbotDecoderx86(SDBbotDecoder):
 
     def __init__(self, filepath):
         rules = {
-            '$code1': '{81 (F1| F2) ?? ?? ?? ?? [5-20] C1 C? (03| 07) 89}',
+            '$code1': '{(81 (F1| F2)| FF 35) ?? ?? ?? ?? [5-20] C1 C? (03| 07) 89}',
             '$code2': '{C7 45 ?? ?? ?? ?? ?? 8B ?? ?? (48| 83 (E8| EA| E9) 01) 89}',
             '$code3': '{81 ?D [3-6] 00 00 (73| 75| 0F)}',
             '$code4': '{C1 C0 0?}',
