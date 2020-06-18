@@ -4,7 +4,7 @@ Extracts Installer module
 """
 import pefile
 import struct
-from sdbbot_gen_funcs import rol, to_hex_dword, to_str_dword, readFile, match_rule, message, fix_dword
+from sdbbot_gen_funcs import rol, to_hex_dword, to_str_dword, readFile, match_rule, message, fix_dword, hexy
 
 
 class SDBbotDecoder:
@@ -145,7 +145,10 @@ class SDBbotDecoder:
         message('Encoded Binary XOR Key: {}'.format(hex(xor_key).upper()))
         message('Encoded Binary Size: {}'.format(hex(size).upper()))
         enc_mz_addr = self.enc_mz_address() + 4
-        enc_mz_data = self.pickup_exact_code(self.pe.get_data(enc_mz_addr, size * 4))
+        if self.osa == 0x32:
+            enc_mz_data = self.pickup_exact_code(self.pe.get_data(enc_mz_addr, size * 4))
+        else:
+            enc_mz_data = self.pe.get_data(enc_mz_addr, size * 4)
         comp_mz_data = self.decode_layer(enc_mz_data, xor_key, rol_val)
         decompress = Decompress(comp_mz_data)
         decompress.decompress()
@@ -153,6 +156,7 @@ class SDBbotDecoder:
 
     def decode(self):
         decoded_code = self.decode_code()
+        open('/home/tera/FL.bin', 'wb').write(decoded_code)
         decoded_exec = self.decode_mz(decoded_code)
         return decoded_exec
 
