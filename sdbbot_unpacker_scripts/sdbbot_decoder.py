@@ -149,6 +149,9 @@ class SDBbotDecoder:
             enc_mz_data = self.pickup_exact_code(self.pe.get_data(enc_mz_addr, size * 4))
         else:
             enc_mz_data = self.pe.get_data(enc_mz_addr, size * 4)
+            if len(enc_mz_data) != enc_mz_data.lstrip('\x00'):
+                enc_mz_data = enc_mz_data.lstrip('\x00')
+                enc_mz_data = enc_mz_data[4:]
         comp_mz_data = self.decode_layer(enc_mz_data, xor_key, rol_val)
         decompress = Decompress(comp_mz_data)
         decompress.decompress()
@@ -156,7 +159,6 @@ class SDBbotDecoder:
 
     def decode(self):
         decoded_code = self.decode_code()
-        open('/home/tera/FL.bin', 'wb').write(decoded_code)
         decoded_exec = self.decode_mz(decoded_code)
         return decoded_exec
 
